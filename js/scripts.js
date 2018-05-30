@@ -9,6 +9,11 @@ function playAudio(audioName)
   setTimeout(stopAudio,1500,audioName);
 }
 
+function playAudioTimeout(audioName,timeout)
+{
+  setTimeout(playAudio,timeout,audioName);
+}
+
 function stopAudio(audioName)
 {
   audioName.pause();
@@ -18,11 +23,13 @@ function stopAudio(audioName)
 $(function(){
 
   $("button#dog-bark").click(function () {
-    playAudio(dogBark);
+    playAudioTimeout(dogBark,0);
+    playAudioTimeout(catMeow,1500);
   });
 
   $("button#cat-meow").click(function () {
-    playAudio(catMeow);
+    playAudioTimeout(catMeow,0);
+    playAudioTimeout(dogBark,1500);
   });
 
 
