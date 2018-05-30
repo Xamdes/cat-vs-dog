@@ -1,43 +1,30 @@
-function prependList(stringOne,where,type){
-  var returnString = "";
-  returnString = returnString.concat("<", type, ">", stringOne, "</", type, ">");
-  $(where).prepend(returnString);
+var dogBark = document.createElement("audio");
+var catMeow = document.createElement("audio");
+dogBark.src = "sound/dog_bark_00.wav";
+catMeow.src = "sound/cat_meow_00.wav";
+
+function playAudio(audioName)
+{
+  audioName.play();
+  setTimeout(stopAudio,1500,audioName);
 }
 
-function removeOnClick(where,type)
+function stopAudio(audioName)
 {
-  $(where).children(type).first().click(function()
-  {
-    $(this).remove();
-  });
-}
-
-function turnColor()
-{
-  $("li").css("background-color","green");
+  audioName.pause();
+  audioName.load();
 }
 
 $(function(){
 
-  $("button#hello").click(function () {
-    prependList("Hello!","ul#user","li");
-    prependList("Why hello there!","ul#webpage","li");
-    removeOnClick("ul#user","li");
-    removeOnClick("ul#webpage","li");
+  $("button#dog-bark").click(function () {
+    playAudio(dogBark);
   });
 
-  $("button#goodbye").click(function () {
-    prependList("Goodbye!","ul#user","li");
-    prependList("Goodbye, dear user!","ul#webpage","li");
-    removeOnClick("ul#user","li");
-    removeOnClick("ul#webpage","li");
+  $("button#cat-meow").click(function () {
+    playAudio(catMeow);
   });
 
-  $("button#stop").click(function () {
-    prependList("Stop copying me!","ul#user","li");
-    prependList("Pardon me. I meant no offense.","ul#webpage","li");
-    removeOnClick("ul#user","li");
-    removeOnClick("ul#webpage","li");
-  });
+
 
 });
