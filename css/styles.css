@@ -11,3 +11,15 @@ img {
 .center-object {
   text-align: center;
 }
+
+.back-color-black {
+  background-color: black;
+}
+
+.back-color-blue {
+  background-color: blue;
+}
+
+.back-color-red {
+  background-color: red;
+}
